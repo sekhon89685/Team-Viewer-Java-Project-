@@ -1,0 +1,54 @@
+class ping extends Thread {
+
+        Socket sock;
+        String k;
+
+        ping(String ip) {
+            k = ip;
+        }
+
+        public void run() {
+            Process p;
+            boolean flag = false;
+            try {
+                p = Runtime.getRuntime().exec("ping " + k);
+                BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                String s1 = "";
+                while (true) {
+                    s1 = br.readLine();
+
+                    if (s1 != null) {
+                        s1 = s1.trim();
+                        if (s1.equals("")) {
+
+                        } else if (s1.contains("ttl") || s1.contains("TTL")) {
+                            sock = new Socket(k, 9000);
+                            flag = true;
+                            break;
+                        } else if (s1.contains("Destination host unreachable") || s1.contains("Request timed out")) {
+                            System.out.println("not reachable"+k);
+                            break;
+                        }
+                    }
+                }
+                if (flag == true) {
+                    DataInputStream dis = new DataInputStream(sock.getInputStream());
+                    DataOutputStream dos = new DataOutputStream(sock.getOutputStream());
+                    dos.writeBytes("hello client\r\n");
+                    String d = "hello server";
+                    String r = dis.readLine();
+
+                    if (r.equals(d)) {
+                        al.add(k);
+                        tm.fireTableDataChanged();
+                        System.out.println(r);
+                    } else {
+
+                    }
+                }
+            } catch (Exception e) {
+            }
+
+        }
+
+    }
