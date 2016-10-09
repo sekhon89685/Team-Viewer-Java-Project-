@@ -1,0 +1,2 @@
+# Team-Viewer-Java-Project-
+TeamViewer  is a popular piece of  software used for Internet-based remote access and support. TeamViewer software can connect to any PC or server, so you can remote control your partner's PC as if you were sitting right in front of it. For the remote session to work the partner has to start a small application, which does not require installation or administrative rights.This project explain all the basic functionality of this TeamViewer Project in Local Area Network.
