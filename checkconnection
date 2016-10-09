@@ -1,0 +1,26 @@
+class checkconnection implements Runnable {
+
+        @Override
+        public void run() {
+            for (int j = 0; j < 17; j++) {
+                Thread t[] = new Thread[15];
+                for (int i = 0; i < 15; i++) {
+                    ping obj = new ping("10.10.105." + (j * 15 + i + 1));//use your own ip4 address
+                    t[i] = new Thread(obj);
+                    t[i].start();
+
+                }
+                for (int k = 0; k < 15; k++) {
+                    try {
+                        t[k].join();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                      //  Logger.getLogger(march5thjframe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                System.out.println("loop completed");
+            }
+
+        }
+
+    }
