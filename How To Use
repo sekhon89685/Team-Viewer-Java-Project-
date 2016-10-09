@@ -1,0 +1,6 @@
+Firstly run the aplication i.e. server side on the server's PC.
+At client side start from the Home Page.If you are new user you'll have to sign up first .
+At login time if you forgot the password then you can get your password on your registered email id by pressing forgot password button.
+after login you will get a jFrame that will show a button "click" and a jTable and "choose" button.Here clicking "click" button will show all the
+the PC's IP address, that will be in active mode i.e. connected to LAN and have running server side application(very small  java executable file).
+From the jTable you can select any IP address and get the control of that computer.
